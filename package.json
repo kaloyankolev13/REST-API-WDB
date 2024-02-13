@@ -1,0 +1,11 @@
+{
+  "name": "rest-api-wdb",
+  "version": "0.0.0",
+  "description": "Compulsary assignment for REST API class",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
