@@ -15,12 +15,6 @@ mongoose.connect(process.env.DATABASE_URL)
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-    }
-);
-
 app.use('/tasks', tasks);
 
 app.listen(process.env.PORT , () => {
