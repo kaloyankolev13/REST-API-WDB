@@ -3,6 +3,7 @@ const Task = require('../models/Task');
 // GET /tasks
 module.exports.getTasks = async (req, res) => {
     const tasks = await Task.find();
+    console.log(req.session);
     res.json(tasks);
 }
 
@@ -19,7 +20,8 @@ module.exports.createTask = async (req, res) => { const task = new Task({
         description: req.body.description,
         dueDate: req.body.dueDate,
         priority: req.body.priority,
-        completed: req.body.completed
+        completed: req.body.completed,
+        createdBy: req.session.user
     });
 
     await task.save();
