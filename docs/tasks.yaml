@@ -1,0 +1,97 @@
+
+  /tasks:
+    get:
+      tags:
+        - Tasks
+      description: Get all tasks owned by the user
+      responses:
+        '200':
+          description: Returns tasks owned by the user
+    post:
+      tags:
+        - Tasks
+      description: Create a new task
+      responses:
+        '200':
+          description: Task created successfully
+  /tasks/{id}:
+    get:
+      tags:
+        - Tasks
+      description: Get a specific task owned by the user
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID of the task to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Returns the requested task
+    put:
+      tags:
+        - Tasks
+      description: Update a specific task owned by the user
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID of the task to update
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Task updated successfully
+    delete:
+      tags:
+        - Tasks
+      description: Delete a specific task owned by the user
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID of the task to delete
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Task deleted successfully
+
+  /users:
+    get:
+      tags:
+        - Users
+      description: Gettings users
+      responses:
+        '200':
+          description: Returns users
+    post:
+      tags:
+        - Users
+      description: Creates a user
+      responses:
+        '200':
+          description: User created
+    /{id}:
+      get:
+        tags:
+          - Users
+        description: Gettings one user
+        responses:
+          '200':
+            description: Returns one user
+      put:
+        tags:
+          - Users
+        description: Updates a user
+        responses:
+          '200':
+            description: User updated
+      delete:
+        tags:
+          - Users
+        description: Deletes a user
+        responses:
+          '200':
+            description: User deleted

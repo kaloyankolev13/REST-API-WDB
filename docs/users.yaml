@@ -1,0 +1,38 @@
+
+  /users:
+    get:
+      tags:
+        - Users
+      description: Gettings users
+      responses:
+        '200':
+          description: Returns users
+    post:
+      tags:
+        - Users
+      description: Creates a user
+      responses:
+        '200':
+          description: User created
+    /{id}:
+      get:
+        tags:
+          - Users
+        description: Gettings one user
+        responses:
+          '200':
+            description: Returns one user
+      put:
+        tags:
+          - Users
+        description: Updates a user
+        responses:
+          '200':
+            description: User updated
+      delete:
+        tags:
+          - Users
+        description: Deletes a user
+        responses:
+          '200':
+            description: User deleted

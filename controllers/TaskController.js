@@ -1,9 +1,13 @@
 const Task = require('../models/Task');
+const { getUserIdfromToken } = require('../utils/authMiddleware');
 
 // GET /tasks
 module.exports.getTasks = async (req, res) => {
+    getUserIdfromToken(req);
+    if (!req.session.user) {
+        return res.status(200).send("No tasks");
+    }
     const tasks = await Task.find();
-    console.log(req.session);
     res.json(tasks);
 }
 
@@ -15,7 +19,8 @@ module.exports.getTask = async (req, res) => {
     res.json(task);
 }
 
-module.exports.createTask = async (req, res) => { const task = new Task({
+module.exports.createTask = async (req, res) => {
+        const task = new Task({
         title: req.body.title,
         description: req.body.description,
         dueDate: req.body.dueDate,

@@ -32,8 +32,16 @@ module.exports.loginUser = async (req, res) => {
 
     req.session.token = token;
     req.session.user = user._id;
-
-    res.json(user);
+    res.status(200)
+    .send({
+      user: {
+        id: user._id,
+        email: user.email,
+        fullName: user.fullName,
+      },
+      message: "Login successfull",
+      accessToken: token,
+    });
 }
 
 module.exports.logoutUser = async (req, res) => {

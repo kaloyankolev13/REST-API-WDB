@@ -15,3 +15,16 @@ module.exports.isLoggedIn = (req, res, next) => {
         next();
     });
 }
+
+module.exports.getUserIdfromToken = (req) => {
+    const token = req.session.token;
+    if (!token) {
+        return null;
+    }
+    jwt.verify(token, process.env.SESSION_SECRET, (err, decoded) => {
+        if (err) {
+            return null;
+        }
+        return decoded.id;
+    });
+}

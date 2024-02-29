@@ -2,13 +2,21 @@ require("dotenv").config();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const express = require('express');
+const cors = require('cors');
 
+// Swagger
+const { swaggerDocument } = require("./utils/swagger");
+const swaggerUi = require("swagger-ui-express");
+
+// Auth
+const { isLoggedIn } = require("./utils/authMiddleware");
 
 // Routes
 const tasks = require('./router/task');
 const users = require('./router/user');
+const projects = require('./router/project');
 
-const express = require('express');
 const app = express();
 
 app.use(session({
@@ -16,6 +24,17 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument()));
+
+
+let corsOptions = {
+    origin: 'http://localhost:8080',
+    optionsSuccessStatus: 200
+  }
+
+app.use(cors(corsOptions))
+
 
 // Connection to the database
 mongoose.connect(process.env.DATABASE_URL)
@@ -26,7 +45,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Using the routes
-app.use('/tasks', tasks);
+app.use('/projects', projects);
+app.use('/tasks',tasks);
 app.use('/auth', users);
 
 app.listen(process.env.PORT , () => {
