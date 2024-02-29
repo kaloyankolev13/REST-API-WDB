@@ -5,57 +5,14 @@ const task = require('../controllers/TaskController');
 const { isLoggedIn } = require('../utils/authMiddleware');
 
 
-/**
- * @openapi
- * /tasks:
- *   get:
- *    tags: 
- *      -Tasks
- *     description: Gettings tasks
- *     responses:
- *       200:
- *         description: Returns tasks owned by the user
- */
 router.get('/', task.getTasks),
-/**
- * @openapi
- * /tasks:
- *   get:
- *     description: Gettings one task
- *     responses:
- *       200:
- *         description: Returns one task owned by the user
- */
+// GET /tasks/:id
 router.get('/:id', task.getTask);
-/**
- * @openapi
- * /tasks/:id:
- *   post:
- *     description: Creates a task
- *     responses:
- *       200:
- *         description: Task created
- */
+// POST /tasks
 router.post('/',task.createTask);
-/**
- * @openapi
- * /tasks:
- *   put:
- *     description: Updates a task
- *     responses:
- *       200:
- *         description: task updated
- */
+// UPDATE /tasks/:id
 router.put('/:id', task.updateTask);
-/**
- * @openapi
- * /tasks:
- *   delete:
- *     description: Deletes a task
- *     responses:
- *       200:
- *         description: Task deleted
- */
+// DELETE /tasks/:id
 router.delete('/:id', task.deleteTask);
 
 module.exports = router;
