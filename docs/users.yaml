@@ -1,38 +1,25 @@
 
-  /users:
-    get:
-      tags:
-        - Users
-      description: Gettings users
-      responses:
-        '200':
-          description: Returns users
-    post:
-      tags:
-        - Users
-      description: Creates a user
-      responses:
-        '200':
-          description: User created
-    /{id}:
+    /users/register:
+      post:
+        tags:
+          - Users
+        description: Creates a user
+        responses:
+          '200':
+            description: User created
+    /users/login:
+      post:
+        tags:
+          - Users
+        description: Authorizes a user
+        responses:
+          '200':
+            description: Returns success
+    /users/logout:
       get:
         tags:
           - Users
-        description: Gettings one user
+        description: Logouts a user
         responses:
           '200':
-            description: Returns one user
-      put:
-        tags:
-          - Users
-        description: Updates a user
-        responses:
-          '200':
-            description: User updated
-      delete:
-        tags:
-          - Users
-        description: Deletes a user
-        responses:
-          '200':
-            description: User deleted
+            description: Returns success
