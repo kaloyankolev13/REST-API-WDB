@@ -46,7 +46,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Using the routes
 app.use('/projects', projects);
-app.use('/tasks',tasks);
+app.use('/tasks', isLoggedIn , tasks);
 app.use('/auth', users);
 
 app.listen(process.env.PORT , () => {
