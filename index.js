@@ -46,6 +46,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Using the routes
 app.use('/projects', projects);
+// If you want to remove the protected routes, you can remove the isLoggedIn middleware from the tasks route.
 app.use('/tasks', isLoggedIn , tasks);
 app.use('/auth', users);
 
